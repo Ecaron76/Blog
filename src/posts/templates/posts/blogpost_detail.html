@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Accueil du blog</title>
+{% endblock %}
+
+{% block content %}
+    <div class="post_content">
+        <div class="background-article">
+            <div class="illustration_carou">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                {% endif %}
+                <div class="article_carou">
+                    <div class="publication_carou">
+                        <div class="categorie_carou">{{ post.get_categories }}</div>
+                        <div class="author_carou">Publié par {{post.author}} le {{post.created_on|safe }}</div>
+                    </div>
+                    <div class="post_title_carou">
+                        <h2>{{ post.title }}</h2>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        <div class="content">
+            {{ post.content|safe }}
+        </div>
+    </div>
+
+{% endblock %}

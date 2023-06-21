@@ -1,0 +1,27 @@
+<article class="post_card" data-category="{{ post.get_categories }}">
+  <div class="illustration">
+    {% if post.image %}
+    <img src="{{ post.image.url }}" alt="">
+    {% endif %}
+    <div class="test">
+      <div class="publication">
+        <div class="categorie">{{ post.get_categories }}</div>
+        <div class="author">Publié par {{post.author}} le {{post.created_on|safe }}</div>
+      </div>
+      <div class="post_title">
+        <h2>{{ post.title }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="legend">
+    <p> {{ post.description }}</p>
+  </div>
+</article>
+
+
+
+
+
+
+
+

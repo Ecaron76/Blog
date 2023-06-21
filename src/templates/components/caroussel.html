@@ -1,0 +1,73 @@
+<div class="caroussel">
+  <div class="previous"><img src="/media/img/larrow.png" alt="" class="arrow"></div>
+  <div class="caroussel_img">
+    {% for post in latest_posts %}
+      {% if post.published == True %}
+          <a href="{% url 'posts:post' category=post.get_category slug=post.slug %}">
+              <div class="illustration_carou">
+                  {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                  {% endif %}
+                  <div class="article_carou">
+                      <div class="publication_carou">
+                        <div class="categorie_carou">{{ post.get_categories }}</div>
+                        <div class="author_carou">Publié par {{post.author}} le {{post.created_on|safe }}</div>
+                      </div>
+                      <div class="post_title_carou">
+                        <h2>{{ post.title }}</h2>
+                      </div>
+                  </div>
+              </div>
+          </a>
+      {% endif %}
+
+    {% endfor %}
+  </div>
+  <div class="next"><img src="/media/img/rarrow.png" alt="" class="arrow"></div>
+</div>
+<div class="caroussel-dots">
+   {% for post in latest_posts %}
+      <div class="dot"></div>
+   {% endfor %}
+</div>
+<script>
+  $(document).ready(function() {
+    $('.caroussel_img').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      prevArrow: $('.previous'),
+      nextArrow: $('.next'),
+    });
+    // Gestion des dots
+    $('.caroussel_img').on('afterChange', function(event, slick, currentSlide) {
+      // Réinitialiser tous les dots
+      $('.caroussel-dots .dot').removeClass('active');
+
+      // Activer le dot correspondant à la diapositive actuelle
+      $('.caroussel-dots .dot').eq(currentSlide).addClass('active');
+    });
+
+    // Gestion du clic sur un dot
+    $('.caroussel-dots .dot').on('click', function() {
+      // Récupérer l'index du dot
+      var dotIndex = $(this).index();
+
+      // Faire défiler le carrousel jusqu'à l'index du dot
+      $('.caroussel_img').slick('slickGoTo', dotIndex);
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+  const arrows = document.querySelectorAll(".caroussel .arrow");
+
+  arrows.forEach(function(arrow) {
+    arrow.addEventListener("mouseenter", function() {
+      this.classList.add("filled");
+    });
+
+    arrow.addEventListener("mouseleave", function() {
+      this.classList.remove("filled");
+    });
+  });
+});
+
+</script>

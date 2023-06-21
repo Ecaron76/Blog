@@ -1,0 +1,8 @@
+{% load static %}
+<header>
+    <div class="menu">
+        <a href="{% url 'posts:home' %}"><div class="menu_item"><img src="/media/img/header/home.png" alt="" class="home_img"> Accueil</div></a>
+        <a href="{% url 'posts:blog_category' %}"><div class="menu_item">Catégories</div></a>
+    </div>
+    <a href=""><div class="account">Mon compte</div></a>
+</header>

@@ -1,0 +1,43 @@
+header{
+    margin-bottom: 70px;
+    padding-left:50px;
+    padding-right:50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Kokoro', sans-serif;
+    color: #FFFFFF;
+    background-color: #222222;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 10px 2px #94FF98;
+    border-bottom: solid 1px black;
+
+}
+.home_img{
+    width: 30px
+}
+.menu{
+    display:flex;
+    align-items: center;
+    gap: 150px;
+}
+.menu_item{
+    gap: 8px;
+    display: flex;
+    align-items: center;
+}
+.account{
+    display:flex;
+    align-items: center;
+    background-color: #282828;
+    border-radius: 8px 8px 8px 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 14px;
+    box-shadow: 0px 0px 10px 0px #94FF98;
+    border: solid 2px white;
+
+}

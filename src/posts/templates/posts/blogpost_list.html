@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Accueil du blog</title>
+{% endblock %}
+
+{% block content %}
+    {% include 'components/caroussel.html' %}
+    <div class="title">
+        <h1>Derniers articles</h1>
+            <img src="/media/img/underline.png" alt="" class="underline">
+    </div>
+
+    <div id="categories_tags">
+        <a href="#" class="category_tag" data-category="all">Tout</a>
+        {% for category in categories %}
+            <a href="#" class="category_tag" data-category="{{ category.name }}">{{ category.name }}</a>
+        {% endfor %}
+    </div>
+    <script>
+
+    </script>
+
+    <div class="article_list">
+        {% for post in posts %}
+            {% if post.published == True %}
+                <a href="{% url 'posts:post' category=post.get_category slug=post.slug %}">{% include 'components/post_card.html' %}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <script>
+        // Écouteur d'événement pour les liens de catégorie
+        const categoryLinks = document.querySelectorAll('.category_tag');
+        const postCards = document.querySelectorAll('.post_card');
+
+        categoryLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const selectedCategory = link.getAttribute('data-category');
+
+                // Afficher ou masquer les articles en fonction de la catégorie sélectionnée
+                postCards.forEach(card => {
+                    const cardCategory = card.getAttribute('data-category');
+                    if (selectedCategory === cardCategory || selectedCategory === 'all') {
+                        card.style.display = 'flex';
+
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

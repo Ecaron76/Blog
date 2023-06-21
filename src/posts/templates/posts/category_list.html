@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Accueil du blog</title>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="title">
+            <h1>Catégories</h1>
+            <img src="/media/img/underline.png" alt="" class="underline">
+        </div>
+        <div class="category_list">
+        {% for category in categories %}
+            <div class="category_card">
+                <h2>{{ category.name }}...</h2>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
