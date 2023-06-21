@@ -1,0 +1,1 @@
+Créez un environment virtuel avant de télécharger les packages
